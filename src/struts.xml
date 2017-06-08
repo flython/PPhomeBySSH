@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+	<!-- 用户相关 -->
+		<action name="dologin" class="cn.bst.action.LoginAction" method="doLogin">
+			<result name="success" type= "redirectAction">getAllArt</result>
+			<result name="error">/error.jsp</result>			
+		</action>
+		<action name="register" class="cn.bst.action.LoginAction" method="doRegister">	
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>	
+		</action>
+		<action name="logout" class="cn.bst.action.LoginAction" method="doLogout">	
+			<result name="success" type="redirect">/login.jsp</result>
+			<result name="error">/error.jsp</result>	
+		</action>
+	<!-- 发帖子与回复 -->
+		<action name="newArticle" class="cn.bst.action.NewArticleAction" >
+			<result name="success" type="redirectAction">getAllArt</result>
+		</action>
+		<action name="getAllArt" class="cn.bst.action.GetArticleListAction">
+			<result name="success">/main.jsp</result>
+		</action>
+		<action name="ArtDetail" class="cn.bst.action.GetReplyList">
+			<result name="success">/artDetil.jsp</result>
+		</action>
+		<action name="getReply" class="cn.bst.action.GetReplyList">
+			<result name="success">/artDetil.jsp</result>
+		</action>
+		<action name="addReply" class="cn.bst.action.NewReplyAction">
+			<result name="success">/artDetil.jsp</result>
+		</action>
+	<!-- 删除帖子 -->
+		<action name="delete" class="cn.bst.action.DeleteArtAction">
+			<result name="success" type="redirectAction">getAllArt</result>
+		</action>
+	</package>
+	<constant name="struts.i18n.encoding" value="UTF-8" /> 
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+</struts>    

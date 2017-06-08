@@ -31,6 +31,7 @@ public class UserHendle {
 			String hql = "from Users p where p.account = ?";
 			Query query = session.createQuery(hql).setString(0, user.getAccount());
 			if(query.uniqueResult() == null){
+				user.setRegTime(new Timestamp(System.currentTimeMillis()));
 				session.save(user);
 			}
 			else {
