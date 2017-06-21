@@ -1,4 +1,4 @@
-package cn.bst.model;
+package cn.bst.hibernate;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -8,33 +8,28 @@ import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import cn.bst.model.Replys;
+
 /**
- 	* A data access object (DAO) providing persistence and search support for Users entities.
+ 	* A data access object (DAO) providing persistence and search support for Replys entities.
  			* Transaction control of the save(), update() and delete() operations 
 		can directly support Spring container-managed transactions or they can be augmented	to handle user-managed Spring transactions. 
 		Each of these methods provides additional information for how to configure it for the desired type of transaction control. 	
-	 * @see cn.bst.model.Users
+	 * @see cn.bst.model.Replys
   * @author MyEclipse Persistence Tools 
  */
-public class UsersDAO extends BaseHibernateDAO  {
-	     private static final Logger log = LoggerFactory.getLogger(UsersDAO.class);
+public class ReplysDAO extends BaseHibernateDAO  {
+	     private static final Logger log = LoggerFactory.getLogger(ReplysDAO.class);
 		//property constants
-	public static final String ACCOUNT = "account";
-	public static final String PSW = "psw";
-	public static final String SEX = "sex";
-	public static final String AGE = "age";
-	public static final String PHONE_NUMBER = "phoneNumber";
-	public static final String HEAD_IMAGE = "headImage";
-	public static final String PERSONAL_CHECK = "personalCheck";
-	public static final String EMAIL = "email";
-	public static final String LIKE_COUNT = "likeCount";
-	public static final String SHARE_COUNT = "shareCount";
+	public static final String SHEARS_ID = "shearsId";
+	public static final String USERS_ID = "usersId";
+	public static final String CONTENT = "content";
 
 
 
     
-    public void save(Users transientInstance) {
-        log.debug("saving Users instance");
+    public void save(Replys transientInstance) {
+        log.debug("saving Replys instance");
         try {
             getSession().save(transientInstance);
             log.debug("save successful");
@@ -44,8 +39,8 @@ public class UsersDAO extends BaseHibernateDAO  {
         }
     }
     
-	public void delete(Users persistentInstance) {
-        log.debug("deleting Users instance");
+	public void delete(Replys persistentInstance) {
+        log.debug("deleting Replys instance");
         try {
             getSession().delete(persistentInstance);
             log.debug("delete successful");
@@ -55,11 +50,11 @@ public class UsersDAO extends BaseHibernateDAO  {
         }
     }
     
-    public Users findById( java.lang.Integer id) {
-        log.debug("getting Users instance with id: " + id);
+    public Replys findById( java.lang.Integer id) {
+        log.debug("getting Replys instance with id: " + id);
         try {
-            Users instance = (Users) getSession()
-                    .get("cn.bst.model.Users", id);
+            Replys instance = (Replys) getSession()
+                    .get("cn.bst.model.Replys", id);
             return instance;
         } catch (RuntimeException re) {
             log.error("get failed", re);
@@ -68,11 +63,11 @@ public class UsersDAO extends BaseHibernateDAO  {
     }
     
     
-    public List findByExample(Users instance) {
-        log.debug("finding Users instance by example");
+    public List findByExample(Replys instance) {
+        log.debug("finding Replys instance by example");
         try {
             List results = getSession()
-                    .createCriteria("cn.bst.model.Users")
+                    .createCriteria("cn.bst.model.Replys")
                     .add(Example.create(instance))
             .list();
             log.debug("find by example successful, result size: " + results.size());
@@ -84,10 +79,10 @@ public class UsersDAO extends BaseHibernateDAO  {
     }    
     
     public List findByProperty(String propertyName, Object value) {
-      log.debug("finding Users instance with property: " + propertyName
+      log.debug("finding Replys instance with property: " + propertyName
             + ", value: " + value);
       try {
-         String queryString = "from Users as model where model." 
+         String queryString = "from Replys as model where model." 
          						+ propertyName + "= ?";
          Query queryObject = getSession().createQuery(queryString);
 		 queryObject.setParameter(0, value);
@@ -98,71 +93,29 @@ public class UsersDAO extends BaseHibernateDAO  {
       }
 	}
 
-	public List findByAccount(Object account
+	public List findByShearsId(Object shearsId
 	) {
-		return findByProperty(ACCOUNT, account
+		return findByProperty(SHEARS_ID, shearsId
 		);
 	}
 	
-	public List findByPsw(Object psw
+	public List findByUsersId(Object usersId
 	) {
-		return findByProperty(PSW, psw
+		return findByProperty(USERS_ID, usersId
 		);
 	}
 	
-	public List findBySex(Object sex
+	public List findByContent(Object content
 	) {
-		return findByProperty(SEX, sex
-		);
-	}
-	
-	public List findByAge(Object age
-	) {
-		return findByProperty(AGE, age
-		);
-	}
-	
-	public List findByPhoneNumber(Object phoneNumber
-	) {
-		return findByProperty(PHONE_NUMBER, phoneNumber
-		);
-	}
-	
-	public List findByHeadImage(Object headImage
-	) {
-		return findByProperty(HEAD_IMAGE, headImage
-		);
-	}
-	
-	public List findByPersonalCheck(Object personalCheck
-	) {
-		return findByProperty(PERSONAL_CHECK, personalCheck
-		);
-	}
-	
-	public List findByEmail(Object email
-	) {
-		return findByProperty(EMAIL, email
-		);
-	}
-	
-	public List findByLikeCount(Object likeCount
-	) {
-		return findByProperty(LIKE_COUNT, likeCount
-		);
-	}
-	
-	public List findByShareCount(Object shareCount
-	) {
-		return findByProperty(SHARE_COUNT, shareCount
+		return findByProperty(CONTENT, content
 		);
 	}
 	
 
 	public List findAll() {
-		log.debug("finding all Users instances");
+		log.debug("finding all Replys instances");
 		try {
-			String queryString = "from Users";
+			String queryString = "from Replys";
 	         Query queryObject = getSession().createQuery(queryString);
 			 return queryObject.list();
 		} catch (RuntimeException re) {
@@ -171,10 +124,10 @@ public class UsersDAO extends BaseHibernateDAO  {
 		}
 	}
 	
-    public Users merge(Users detachedInstance) {
-        log.debug("merging Users instance");
+    public Replys merge(Replys detachedInstance) {
+        log.debug("merging Replys instance");
         try {
-            Users result = (Users) getSession()
+            Replys result = (Replys) getSession()
                     .merge(detachedInstance);
             log.debug("merge successful");
             return result;
@@ -184,8 +137,8 @@ public class UsersDAO extends BaseHibernateDAO  {
         }
     }
 
-    public void attachDirty(Users instance) {
-        log.debug("attaching dirty Users instance");
+    public void attachDirty(Replys instance) {
+        log.debug("attaching dirty Replys instance");
         try {
             getSession().saveOrUpdate(instance);
             log.debug("attach successful");
@@ -195,8 +148,8 @@ public class UsersDAO extends BaseHibernateDAO  {
         }
     }
     
-    public void attachClean(Users instance) {
-        log.debug("attaching clean Users instance");
+    public void attachClean(Replys instance) {
+        log.debug("attaching clean Replys instance");
         try {
                       	getSession().buildLockRequest(LockOptions.NONE).lock(instance);
           	            log.debug("attach successful");

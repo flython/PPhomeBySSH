@@ -5,8 +5,8 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import cn.bst.hibernate.SharesDAO;
 import cn.bst.model.Shares;
-import cn.bst.model.SharesDAO;
 import cn.bst.service.ShareHendle;
 
 public class NewArticleAction extends ActionSupport {

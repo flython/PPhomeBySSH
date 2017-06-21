@@ -1,4 +1,4 @@
-package cn.bst.model;
+package cn.bst.hibernate;
 
 import org.hibernate.Session;
 

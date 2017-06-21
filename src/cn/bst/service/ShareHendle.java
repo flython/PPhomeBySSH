@@ -8,8 +8,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import cn.bst.hibernate.SharesDAO;
 import cn.bst.model.Shares;
-import cn.bst.model.SharesDAO;
 import cn.bst.utils.HibernateUtils;
 import cn.bst.utils.ImgUtils;
 

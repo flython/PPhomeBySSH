@@ -2,8 +2,8 @@ package cn.bst.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import cn.bst.model.BaseHibernateDAO;
-import cn.bst.model.SharesDAO;
+import cn.bst.hibernate.BaseHibernateDAO;
+import cn.bst.hibernate.SharesDAO;
 import cn.bst.service.ShareHendle;
 
 public class DeleteArtAction extends ActionSupport {

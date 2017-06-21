@@ -2,7 +2,6 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>BSTServer</display-name>
   <welcome-file-list>
-  	
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -20,4 +19,8 @@
     <url-pattern>*.action</url-pattern>
     <url-pattern>*.jsp</url-pattern>
   </filter-mapping>
+  <listener>
+  	<listener-class>cn.bst.hibernate.HibernateIntiListerner</listener-class>
+  </listener>
 </web-app>
+

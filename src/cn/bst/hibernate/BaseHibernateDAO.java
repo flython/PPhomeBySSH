@@ -1,6 +1,5 @@
-package cn.bst.model;
+package cn.bst.hibernate;
 
-import cn.bst.hibernate.HibernateSessionFactory;
 import org.hibernate.Session;
 
 

@@ -8,8 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import cn.bst.model.Replys;
-import cn.bst.model.ReplysAndAccount;
-import cn.bst.model.Shares;
 import cn.bst.utils.HibernateUtils;
 
 public class ReplyHendle {
